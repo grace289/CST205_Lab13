@@ -8,11 +8,23 @@
 # Christian Guerrero
 
 #Mad Lib program    
+
+
+"""
+
+Add Strings
+
+At the beginning of your game, ask the user to enter their name (or to name their character). Use the user's name at least one other place in your program (maybe when they win or lose!).
+
+Add Lists
+
+Now that we've explored lists, you can probably think of multiple ways to use them in your adventure game.  In particular, lists should really help you cut down on the number of global variables you need since you can have a single list for inventory or to hold other important information.  Go back through your adventure game and think about whether there is an opportunity to use lists to simplify your code.  
+"""
                                                                                           
 story = """    
 Archaeologists recently unearthed a curious %(item)s in %(place)s ." 
 A %(place)s %(item)s. 
-Unlike the Great %(item)s of %(place2)s, which was made of %(material)s, this %(item)s was made from plastic.  
+Unlike the Great %(item)s of %(city)s, which was made of %(material)s, this %(item)s was made from plastic.  
 And it wasn't carved by the ancient %(place)s, but molded by designers on the set of %(movie)s.  
 The film featured thousands of actors and actresses, and the director commissioned famed art
 by designer %(name)s to construct an ancient %(place)s palace for the film's backdrop. %(name)ss final product  
@@ -27,15 +39,19 @@ def madLib():
     userInput = dict()
     addInput('item', userInput)
     addInput('place', userInput)
-    addInput('place2', userInput)
+    addInput('city', userInput)
     addInput('material', userInput)      
     addInput('movie', userInput)           
     addInput('name', userInput)           
     printNow(story % userInput)                         
                                                     
 def addInput(key, dictionary):
-    prompt = "Enter one word for %s: " % key     
-    dictionary[key] = raw_input(prompt)                                                             
+    promptString = "Enter one word for %s: " % key     
+    dictionary[key] = requestString(promptString)   
+                                                                                                                         
 
-madLib()                                         
-raw_input("To end the program please press enter.")   
+showInformation("Welcome to MadLib. Madlibs is a word game that prompts you, the player, for a list of words to substitute blank spaces in a story. In this game we're using a news article from NPR.")
+userName = requestString("What is your name")
+madLib()
+printNow(userName + " you've created a new story!")                                         
+requestString("To end the program please press enter.")   
